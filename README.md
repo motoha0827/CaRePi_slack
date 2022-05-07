@@ -1,5 +1,5 @@
 # CaRePi_slack
-slack bot of *Ca*rd *Re*der de *Pi*tte suru yatsu
+slack bot of **Ca**rd **Re**der de **Pi**tte suru yatsu
 
 ## spec
 Python 2.7.18
