@@ -13,13 +13,13 @@ def handle_carepi_command(ack, say, command):
     ack()
     user_id = command["user_id"]
     channel_id = command["channel_id"]
-    Ephemeral_text = '【ERROR】\n表示名を 入学年度 + J + 学籍番号下３桁 + 名字 の形式にしてください。(例:20J062秋本)'
+    Ephemeral_text = '【ERROR】\n表示名を 学籍番号 + 名字 の形式にしてください。(例:2011140062秋本)'
 
     display_name = app.client.users_info(user=user_id)['user']['profile']['display_name']
 
-    check_name = re.match(r'[0-9]{2}[A-Z][0-9]{3}.*', display_name)
+    check_name = re.match(r'[0-9]{10}.*', display_name)
     if check_name != None:
-      student_num = display_name[:2] + "11140" + display_name[3:6]
+      student_num = display_name[:10] 
       response = requests.post(f'http://localhost:3000/session?student_number={student_num}&no_send_slack=true')
       say(f'{response.json()["data"]} \n {command["text"]}')
     else:
