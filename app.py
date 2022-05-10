@@ -20,7 +20,7 @@ def handle_carepi_command(ack, say, command):
     check_name = re.match(r'[0-9]{10}.*', display_name)
     if check_name != None:
       student_num = display_name[:10] 
-      response = requests.post(f'http://localhost:3000/session?student_number={student_num}&no_send_slack=true')
+      response = requests.post(f'http://localhost:3000/session?student_number={student_num}')
       say(f'{response.json()["data"]} \n {command["text"]}')
     else:
       app.client.chat_postEphemeral(channel=channel_id, text=Ephemeral_text, user=user_id)
