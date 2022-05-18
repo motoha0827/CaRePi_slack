@@ -1,3 +1,4 @@
+# coding: UTF-8
 import os
 from dotenv import load_dotenv
 from slack_bolt import App
